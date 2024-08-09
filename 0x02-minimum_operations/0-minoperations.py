@@ -1,20 +1,21 @@
 #!/usr/bin/python3
-"""
-Calculate minimum operations for printing a number fo characters
-"""
+""" Minimum Operations
+    """
 
 
-def minOperations(n):
-    """Calculate minimum operations for printing a number fo characters"""
-    if n <= 0:
+def minOperations(n: int) -> int:
+    """ Minimum Operations needed to get n H characters """
+    add = 'H'
+    body = 'H'
+    op = 0
+    while (len(body) < n):
+        if n % len(body) == 0:
+            op += 2
+            add = body
+            body += body
+        else:
+            op += 1
+            body += add
+    if len(body) != n:
         return 0
-    k = 1
-    while n % 2 == 0:
-        k = k * 2
-        n = n // 2
-    if k == 1:
-        return n
-    if n > 1:
-        return k + n
-    if n == 1:
-        return k
+    return op
