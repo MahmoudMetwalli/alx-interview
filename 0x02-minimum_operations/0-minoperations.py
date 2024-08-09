@@ -5,6 +5,8 @@
 
 def minOperations(n: int) -> int:
     """ Minimum Operations needed to get n H characters """
+    if n <= 0:
+        return 0
     add = 'H'
     body = 'H'
     op = 0
